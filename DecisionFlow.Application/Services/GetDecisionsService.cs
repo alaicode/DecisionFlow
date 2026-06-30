@@ -8,9 +8,9 @@ namespace DecisionFlow.Application.Services
 {
     public class GetDecisionsService
     {
-        private readonly IDecisionRepository _repository;
+        private readonly IDecisionRepository<Decision> _repository;
 
-        public GetDecisionsService(IDecisionRepository repository)
+        public GetDecisionsService(IDecisionRepository<Decision> repository)
         {
             _repository = repository;
         }
