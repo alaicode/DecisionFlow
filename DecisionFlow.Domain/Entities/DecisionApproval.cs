@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace DecisionFlow.Domain.Entities
+{
+    public class DecisionApproval
+    {
+        public Guid Id { get; set; }
+        public string ApprovedBy { get; private set; }
+        public DateTime ApprovedAt { get; private set; }
+        public bool IsApproved { get; private set; }
+
+        public DecisionApproval(string approvedBy, bool isApproved = true)
+        {
+            Id = Guid.NewGuid();
+            ApprovedBy = approvedBy;
+            ApprovedAt = DateTime.UtcNow;
+            IsApproved = isApproved;
+        }
+
+    }
+}
