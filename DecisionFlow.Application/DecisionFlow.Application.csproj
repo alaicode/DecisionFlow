@@ -6,4 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DecisionFlow.Domain\DecisionFlow.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
