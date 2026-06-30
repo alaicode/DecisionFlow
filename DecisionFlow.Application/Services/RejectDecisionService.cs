@@ -1,4 +1,5 @@
 ﻿using DecisionFlow.Application.Interfaces;
+using DecisionFlow.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,9 +8,9 @@ namespace DecisionFlow.Application.Services
 {
     public class RejectDecisionService
     {
-        private readonly IDecisionRepository _repository;
+        private readonly IDecisionRepository<Decision> _repository;
 
-        public RejectDecisionService(IDecisionRepository repository)
+        public RejectDecisionService(IDecisionRepository<Decision> repository)
         {
             _repository = repository;
         }

@@ -5,11 +5,11 @@ using System.Text;
 
 namespace DecisionFlow.Application.Interfaces
 {
-    public interface IDecisionRepository
+    public interface IDecisionRepository<T> where T : class
     {
-        Task<Decision> GetByIdAsync(Guid id);
-        Task<List<Decision>> GetAllAsync();
-        Task AddAsync(Decision decision);
+        Task<T> GetByIdAsync(Guid id);
+        Task<List<T>> GetAllAsync();
+        Task AddAsync(T entity);
         Task SaveChangesAsync();
 
     }
