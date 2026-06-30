@@ -1,3 +1,6 @@
 <Solution>
+  <Project Path="DecisionFlow.Application/DecisionFlow.Application.csproj" />
+  <Project Path="DecisionFlow.Domain/DecisionFlow.Domain.csproj" />
+  <Project Path="DecisionFlow.Infrastructure/DecisionFlow.Infrastructure.csproj" />
   <Project Path="DecisionFlow/DecisionFlow.csproj" />
 </Solution>
