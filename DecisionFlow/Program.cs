@@ -14,10 +14,10 @@ builder.Services.AddDbContext<DecisionFlowDbContext>(options =>
 builder.Services.AddScoped(typeof(IDecisionRepository<Decision>), typeof(DecisionFlowRepository<Decision>));
 
 //TODO: put to a serviceCollection extension method
-builder.Services.AddScoped<ApproveDecisionService>();
-builder.Services.AddScoped<GetDecisionsService>();
-builder.Services.AddScoped<RejectDecisionService>();
 builder.Services.AddScoped<CreateDecisionService>();
+builder.Services.AddScoped<ApproveDecisionService>();
+builder.Services.AddScoped<RejectDecisionService>();
+builder.Services.AddScoped<GetDecisionsService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -25,6 +25,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.UseExceptionHandler("/error");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -38,5 +40,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
 
 app.Run();

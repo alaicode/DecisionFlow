@@ -9,7 +9,7 @@ namespace DecisionFlow.Domain.Entities
         public Guid Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public DecisionStatues Status { get; set; }
+        public DecisionStatus Status { get; set; }
         public DateTime CreatedAt { get; set; }
         public List<DecisionApproval> Approvals { get; set; }
 
@@ -18,42 +18,42 @@ namespace DecisionFlow.Domain.Entities
             Id = Guid.NewGuid();
             Title = title;
             Description = description;
-            Status = DecisionStatues.Pending;
+            Status = DecisionStatus.Pending;
             CreatedAt = DateTime.UtcNow;
             Approvals = new List<DecisionApproval>();
         }
 
         public void Approve(string user)
         {
-            if (Status.Equals(DecisionStatues.Rejected))
+            if (Status.Equals(DecisionStatus.Rejected))
             {
                 throw new InvalidOperationException("Cannot approve a rejected decision.");
             }
 
-            if(Status.Equals(DecisionStatues.Approved))
+            if(Status.Equals(DecisionStatus.Approved))
             {
                 throw new InvalidOperationException("Cannot approve an already approved decision.");
             }
             var approval = new DecisionApproval(user, true);
             Approvals.Add(approval);
-            Status = DecisionStatues.Approved;
+            Status = DecisionStatus.Approved;
         }
 
         public void Reject(string rejectedBy)
         {
-            if (Status.Equals(DecisionStatues.Approved))
+            if (Status.Equals(DecisionStatus.Approved))
             {
                 throw new InvalidOperationException("Cannot reject an already approved decision.");
             }
 
-            if (Status.Equals(DecisionStatues.Rejected))
+            if (Status.Equals(DecisionStatus.Rejected))
             {
                 throw new InvalidOperationException("Cannot reject an already rejected decision.");
             }
 
             var approval = new DecisionApproval(rejectedBy, false);
             Approvals.Add(approval);
-            Status = DecisionStatues.Rejected;
+            Status = DecisionStatus.Rejected;
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DecisionFlow.Domain.Entities
 {
-    public enum DecisionStatues
+    public enum DecisionStatus
     {
         Pending,
         Approved,
