@@ -15,7 +15,6 @@ namespace DecisionFlow.Domain.Entities
 
         public DecisionApproval(string approvedBy, bool isApproved = true)
         {
-            Id = Guid.NewGuid();
             ApprovedBy = approvedBy;
             ApprovedAt = DateTime.UtcNow;
             IsApproved = isApproved;

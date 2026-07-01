@@ -27,7 +27,7 @@ namespace DecisionFlow.Infrastructure.Repositories
 
         public async Task<T> GetByIdAsync(Guid id)
         {
-            return await _context.Set<T>().FindAsync(id);
+            return await _context.Set<T>().SingleAsync(e => EF.Property<Guid>(e, "Id") == id);
         }
 
         public async Task SaveChangesAsync()
