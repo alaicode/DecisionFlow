@@ -9,5 +9,8 @@ jobs:
     steps:
       - name: Say Hello
         run: echo "Hello, World!"
-      - name: Say goodbye
-        run: echo "Goodbye, World!"
+  say-hello-again:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say Hello Again
+        run: echo "Hello again, World!"
