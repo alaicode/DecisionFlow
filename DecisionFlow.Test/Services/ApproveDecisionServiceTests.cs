@@ -70,7 +70,8 @@ namespace DecisionFlow.UnitTest
             // Assert
             var approval = Assert.Single(decision.Approvals);
             Assert.Equal("john.doe", approval.ApprovedBy);
-            Assert.True(approval.IsApproved);
+            //Assert.True(approval.IsApproved);
+            Assert.True(false);
         }
 
         [Fact]
