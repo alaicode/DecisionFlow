@@ -1,0 +1,28 @@
+services:
+  decisionflow:
+    build:
+      context: .
+      dockerfile: DecisionFlow/Dockerfile
+    ports:
+      - "8080:8080"
+      - "8081:8081" 
+    image:
+      - decisionflow:latest
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=DecisionFlow;User Id=sa;Password=${MSSQL_SA_PASSWORD};TrustServerCertificate=True
+    depends_on:
+      - sqlserver
+
+  sqlserver:
+    image: MSSqlServer:2022
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=${MSSQL_SA_PASSWORD}
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+
+volumes:
+  sqlserver_data:
